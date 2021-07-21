@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ListView lv;
-    ArrayList<String> al;
-    ArrayAdapter<String> aa;
+    ArrayList<AndroidVersion> al;
+    CustomAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +21,12 @@ public class MainActivity extends AppCompatActivity {
         lv = findViewById(R.id.lv);
         al = new ArrayList<>();
 
-        al.add("Pie - 9.0");
-        al.add("Oreo - 8.0");
-        al.add("Nougat - 7.0");
-        al.add("Marshmallow - 6.0");
+        al.add(new AndroidVersion("Pie", "9.0"));
+        al.add(new AndroidVersion("Oreo","8.0"));
+        al.add(new AndroidVersion("Nougat","7.0"));
+        al.add(new AndroidVersion("Marshmallow","6.0"));
 
-        aa = new ArrayAdapter<>(MainActivity.this,android.R.layout.simple_list_item_1, al);
-        lv.setAdapter(aa);
+        adapter = new CustomAdapter(MainActivity.this, R.layout.row, al);
+        lv.setAdapter(adapter);
     }
 }
